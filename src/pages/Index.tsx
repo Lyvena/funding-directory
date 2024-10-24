@@ -1,14 +1,13 @@
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
+import React from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useToast } from "@/components/ui/use-toast"
-import FundingSourceCard from '@/components/FundingSourceCard';
-import { Banknote, DollarSign, CreditCard, Wallet, BarChart } from 'lucide-react';
+import FundingSourceCard from '@/components/FundingSourceCard'
+import { Banknote, DollarSign, CreditCard, Wallet, BarChart } from 'lucide-react'
 
-// Mock API call
 const fetchFundingSources = async () => {
   // In a real app, this would be an API call
   return [
@@ -19,27 +18,33 @@ const fetchFundingSources = async () => {
 };
 
 const Index = () => {
-  const { toast } = useToast();
+  const { toast } = useToast()
   const { data: fundingSources, isLoading, error } = useQuery({
     queryKey: ['fundingSources'],
     queryFn: fetchFundingSources,
-  });
+  })
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault()
     toast({
       title: "Search Initiated",
       description: "Your search request has been received.",
-    });
-  };
+    })
+  }
 
-  if (isLoading) return <div className="flex justify-center items-center h-screen">Loading...</div>;
-  if (error) return <div className="flex justify-center items-center h-screen">An error occurred</div>;
+  if (isLoading) return <div className="flex justify-center items-center h-screen">Loading...</div>
+  if (error) return <div className="flex justify-center items-center h-screen">An error occurred</div>
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">Funding Directory</h1>
-      
+      <div className="max-w-3xl mx-auto text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4">Welcome to Funding Directory</h1>
+        <p className="text-xl text-muted-foreground mb-8">
+          Discover and manage funding sources for your projects
+        </p>
+        <Button size="lg" className="mb-8">Get Started</Button>
+      </div>
+
       <form onSubmit={handleSearch} className="mb-8">
         <div className="flex gap-2">
           <Input type="search" placeholder="Search funding sources..." className="flex-grow" />
@@ -85,7 +90,7 @@ const Index = () => {
         </CardContent>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index
