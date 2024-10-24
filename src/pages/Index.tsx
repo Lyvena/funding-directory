@@ -2,11 +2,11 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useToast } from "@/components/ui/use-toast"
 import FundingSourceCard from '@/components/FundingSourceCard'
-import { Banknote, DollarSign, CreditCard, Wallet, BarChart } from 'lucide-react'
+import { Banknote, Rocket, Lightbulb, BarChart } from 'lucide-react'
 
 const fetchFundingSources = async () => {
   // In a real app, this would be an API call
@@ -37,12 +37,52 @@ const Index = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-3xl mx-auto text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Funding Directory</h1>
+      <div className="max-w-3xl mx-auto text-center mb-12 space-y-6">
+        <h1 className="text-5xl font-bold mb-4 animate-fade-in">Welcome to Funding Directory</h1>
         <p className="text-xl text-muted-foreground mb-8">
-          Discover and manage funding sources for your projects
+          Discover and manage funding sources for your projects with AI-powered insights
         </p>
-        <Button size="lg" className="mb-8">Get Started</Button>
+        <div className="flex justify-center gap-4">
+          <Button size="lg" className="animate-bounce">
+            <Rocket className="mr-2 h-5 w-5" /> Get Started
+          </Button>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <Card className="transform transition-all hover:scale-105">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              AI-Powered
+            </CardTitle>
+            <CardDescription>
+              Smart recommendations and insights powered by artificial intelligence
+            </CardDescription>
+          </CardHeader>
+        </Card>
+        <Card className="transform transition-all hover:scale-105">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Banknote className="h-5 w-5" />
+              Funding Sources
+            </CardTitle>
+            <CardDescription>
+              Access to diverse funding opportunities and grants
+            </CardDescription>
+          </CardHeader>
+        </Card>
+        <Card className="transform transition-all hover:scale-105">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BarChart className="h-5 w-5" />
+              Analytics
+            </CardTitle>
+            <CardDescription>
+              Detailed insights and tracking of your funding journey
+            </CardDescription>
+          </CardHeader>
+        </Card>
       </div>
 
       <form onSubmit={handleSearch} className="mb-8">

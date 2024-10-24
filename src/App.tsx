@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import Index from "./pages/Index"
 import Auth from "./pages/Auth"
 import Contact from "./pages/Contact"
+import Settings from "./pages/Settings"
 import { Button } from "./components/ui/button"
 import { Navigation } from "./components/Navigation"
 import { Footer } from "./components/Footer"
@@ -16,7 +17,7 @@ const App = () => (
     <TooltipProvider>
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
-          <header className="border-b">
+          <header className="border-b sticky top-0 bg-background z-50">
             <div className="container mx-auto px-4 py-4">
               <div className="flex justify-between items-center mb-4">
                 <Link to="/" className="flex items-center gap-2">
@@ -36,6 +37,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/settings" element={<Settings />} />
             </Routes>
           </main>
           <Footer />
